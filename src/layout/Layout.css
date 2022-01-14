@@ -1,0 +1,122 @@
+p {
+  font-size: 13pt;
+}
+
+.side-bar {
+  background-color: #393a44;
+  min-width: 200px;
+}
+
+.search-input {
+  width: auto;
+}
+
+.btn-primary, .btn-secondary, .btn-light {
+  border-radius: 0;
+}
+
+.table-style {
+  background-color: #97d6df;
+  max-width: 200px;
+  min-width: 150px;
+}
+
+.w-33 {
+  width: 33.333%;
+}
+
+.date-buttons {
+  width: 33.333%;
+  min-width: 100px;
+  font-size: 12pt;
+}
+
+.divider
+{
+	position: relative;
+	margin-top: 0px;
+	height: 1px;
+}
+
+.div-transparent:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 2%;
+	right: 2%;
+	width: 96%;
+	height: 1px;
+	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+.btn-info {
+  background-color: rgba(211, 211, 211, 0.489);
+  color: black;
+}
+
+.btn-info:hover {
+  background-color: grey;
+}
+
+.res-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.res-components {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.res-buttons {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-bottom: 0;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.res-bg {
+  background-color: #a0dac8;
+  
+}
+
+.form-control {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+
+  .res-components {
+    width: 12%;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .res-container {
+    justify-content: space-between;
+  }
+
+  .res-buttons {
+    flex-direction: column;
+    width: 12%;
+    margin-top: 0;
+  }
+
+  .form-control {
+    text-align: left;
+  }
+
+  .search-input {
+    width: 250px;
+  }
+}

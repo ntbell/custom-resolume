@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { BrowserRouter as Router } from "react-router-dom";
+import "@testing-library/jest-dom/extend-expect";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders title", () => {
+  render(
+    <Router>
+      <App />
+    </Router>
+  );
+  const restaurant = screen.getByText(/periodic tables/i);
+  expect(restaurant).toBeInTheDocument();
 });
