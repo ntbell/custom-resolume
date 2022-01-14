@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
-import Routes from "./Routes";
+import Router from "./Router";
 import "./Layout.css";
 
 /**
@@ -10,7 +10,7 @@ import "./Layout.css";
  *
  * @returns {JSX.Element}
  */
-function Layout() {
+ function Layout() {
   return (
     <div className="container-fluid">
       <div className="row h-100">
@@ -18,7 +18,7 @@ function Layout() {
           <Menu />
         </div>
         <div className="col pt-2 bg-light">
-          <Routes />
+          <Router />
         </div>
       </div>
     </div>
