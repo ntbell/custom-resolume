@@ -9,6 +9,6 @@ test("renders title", () => {
       <App />
     </Router>
   );
-  const restaurant = screen.getByText(/periodic tables/i);
-  expect(restaurant).toBeInTheDocument();
+  const title = screen.getByText(/custom resolume/i);
+  expect(title).toBeInTheDocument();
 });

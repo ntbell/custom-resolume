@@ -12,9 +12,6 @@ import useQuery from "../utils/useQuery";
 function Router() {
   const query = useQuery();
   const history = useHistory();
-  const [bpm, setBpm] = useState(128);
-
-  console.log("In router");
 
   return (
     <Switch>
