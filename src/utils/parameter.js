@@ -4,7 +4,7 @@ import ParameterMonitor from './parameter_monitor.js'
 import PropTypes from 'prop-types';
 import Rotary from './rotary.js';
 import { useDebouncedCallback } from 'use-debounce';
-//import './parameter.css';
+//ToDo: debouncer might be broken in some instances --> removed class and turned into functional
 
 /**
  *  Intercept and monitor changes to submit when
