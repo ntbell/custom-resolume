@@ -1,6 +1,6 @@
 import React from "react";
-import Menu from "./Menu";
-import Router from "./Router";
+import Composition from "../dashboard/Composition";
+import ResolumeProvider from "../utils/resolume_provider";
 import "./Layout.css";
 
 /**
@@ -10,17 +10,26 @@ import "./Layout.css";
  *
  * @returns {JSX.Element}
  */
- function Layout() {
+function Layout() {
+
+  function get_option(production, development, fallback) {
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
+      return production;
+    } else if (development) {
+      return development;
+    } else {
+      return fallback;
+    }
+  }
+
+  const host = get_option(window.location.hostname, process.env.REACT_APP_HOST, '127.0.0.1');
+  const port = parseInt(get_option(window.location.port, process.env.REACT_APP_PORT, 8080), 10);
+
   return (
-    <div className="container-fluid">
-      <div>
-        <div>
-          <Menu />
-        </div>
-        <div className="bg-light">
-          <Router />
-        </div>
-      </div>
+    <div>
+      <ResolumeProvider host={host} port={port}>
+        <Composition host={host} port={port} />
+      </ResolumeProvider>
     </div>
   );
 }

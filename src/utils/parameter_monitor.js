@@ -33,7 +33,7 @@ const ParameterMonitor = {
     Single: function({ parameter, render }) {
         const [ state, setState ] = useState(parameter);
 
-        const merge = newState => setState({ ...state, ...newState });
+        const merge = (newState) => setState({ ...state, ...newState });
 
         return (
             <React.Fragment>
