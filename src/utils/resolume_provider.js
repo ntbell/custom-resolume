@@ -7,7 +7,7 @@ import ParameterContainer from './parameter_container.js'
 
 export const ResolumeContext = createContext();
 
-function ResolumeProvider(props) {
+function ResolumeProvider({ connection, children }) {
     // the default product info if we are not connected to a backend
     const default_product = {
         name: '(disconnected)',
@@ -36,7 +36,7 @@ function ResolumeProvider(props) {
     // create a new transport and register connection state listeners
     const create_transport = () => {
         // create the transport
-        let transport = new Transport(props.host, props.port);
+        let transport = new Transport(connection.host, connection.port);
 
         // maintain updated state
         transport.on_message(message => {
@@ -45,7 +45,7 @@ function ResolumeProvider(props) {
                 /* check if message contains a composition, does it have columns and layers */
                 if (message.columns && message.layers)
                 {
-                    console.log('state update', message);
+                    //console.log('state update', message);
                     setComposition(message);
                 }
                 else
@@ -67,7 +67,7 @@ function ResolumeProvider(props) {
                     setProduct(product)
                 });
 
-                xhr.open('GET', `//${props.host}:${props.port}/api/v1/product`);
+                xhr.open('GET', `//${connection.host}:${connection.port}/api/v1/product`);
                 xhr.send();
             } else {
                 setComposition(default_composition);
@@ -102,9 +102,9 @@ function ResolumeProvider(props) {
     const clip_url = (id, last_update) => {
         // is this the default clip (i.e. it has never been updated from its dummy
         if (last_update === "0") {
-            return `//${props.host}:${props.port}/api/v1/composition/thumbnail/dummy`;
+            return `//${connection.host}:${connection.port}/api/v1/composition/thumbnail/dummy`;
         } else {
-            return `//${props.host}:${props.port}/api/v1/composition/clips/by-id/${id}/thumbnail/${last_update}`;
+            return `//${connection.host}:${connection.port}/api/v1/composition/clips/by-id/${id}/thumbnail/${last_update}`;
         }
     };
 
@@ -120,7 +120,7 @@ function ResolumeProvider(props) {
 
     return (
         <ResolumeContext.Provider value={properties}>
-            {props.children}
+            {children}
         </ResolumeContext.Provider>
     )
 }

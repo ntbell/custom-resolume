@@ -7,16 +7,11 @@ function StickyNavbar({ tempocontroller, layer }) {
     const [show, setShow] = useState(false);
     const handleScroll = () => setShow(window.pageYOffset > 50);
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        
-    }, []);
-
-    console.log(layer);
+    useEffect(() => window.addEventListener("scroll", handleScroll), []);
 
     return (
         <div className={`nav ${show && 'scrollNav'}`}>
-            <p>Effects</p>
+            <h3>Effects</h3>
             {layer && <Effects layer={layer} />}
             {tempocontroller.tempo && <TempoControl tempocontroller={tempocontroller} />}
         </div>

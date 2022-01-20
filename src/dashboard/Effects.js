@@ -27,6 +27,33 @@ function Effects({ layer }) {
         );
     }
 
+    let transition = null;
+    if (layer.transition) {
+        transition = (
+            <div>
+                <div>
+                    <span className="label" onDoubleClick={() => handle_reset(layer.transition.duration.id)}>Duration</span>
+                    <Parameter
+                        name="Duration"
+                        key={layer.transition.duration.id}
+                        id={layer.transition.duration.id}
+                        parameter={layer.transition.duration}
+                    />
+                </div>
+                <div>
+                    <span className="label" onDoubleClick={() => handle_reset(layer.transition.blend_mode.id)}>Blend Mode</span>
+                    <Parameter
+                        name="Blend Mode"
+                        key={layer.transition.blend_mode.id}
+                        id={layer.transition.blend_mode.id}
+                        parameter={layer.transition.blend_mode}
+                    />
+                </div>
+            </div>
+        );
+    }  
+
+
     
     //Get effects pre-loaded into layer (or load effects manually?)
     //Turn into buttons
@@ -38,8 +65,9 @@ function Effects({ layer }) {
     */
     return (
         <>
-            <div className={`button off`} onMouseDown={clear}>Clear</div>
+            <div className={`btn btn-danger`} onClick={clear}>Clear Clip</div>
             {autopilot}
+            {transition}
             {/* <ParameterMonitor.Single parameter={layer.bypassed} render={bypassed => (
                 <div className={`button ${bypassed.value ? 'on' : 'off'}`} onMouseDown={() => set_bypass(!bypassed.value)}>Mute Display</div>
             )} /> */}

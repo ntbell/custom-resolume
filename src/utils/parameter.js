@@ -77,7 +77,7 @@ function ParamString(props) {
         (value) => {
             setValue(value);
             on_update(value);
-            setValue(parameter.value);
+            setValue(undefined);
         }, 10, { max_wait: 25 }
     );
 
@@ -147,7 +147,7 @@ function ParamChoice(props) {
         (value) => {
             setValue(value);
             on_update(value);
-            setValue(parameter.value);
+            setValue(undefined);
         }, 10, { max_wait: 25 }
     );
 
@@ -186,7 +186,7 @@ function ParamRange(props) {
         (value) => {
             setValue(value);
             on_update(value);
-            setValue(parameter.value);
+            setValue(undefined);
         }, 10, { max_wait: 25 }
     );
     const showlabel = hidelabel === "no";
@@ -234,6 +234,7 @@ function ParamRange(props) {
                 <input
                     type="text"
                     value={((value !== undefined) ? value : parameter.value) * multiplier}
+                    //value={(value || parameter.value) * multiplier} //TEST
                     onChange={(event) => monitor.current.set_value(event.target.value)}
                     onKeyPress={handler}
                     onBlur={() => monitor.current.confirm()}
@@ -305,7 +306,7 @@ function ParamColor(props) {
         (value) => {
             setValue(value);
             on_update(value);
-            setValue(parameter.value);
+            setValue(undefined);
         }, 10, { max_wait: 25 }
     );
 

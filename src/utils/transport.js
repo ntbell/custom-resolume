@@ -5,7 +5,7 @@
   * Class maintaining the websocket transport
   * to the arena webserver
   */
- class Transport {
+class Transport {
     constructor(host, port) {
         // initialize empty listeners and state listeners
         this.listeners = [];
@@ -21,7 +21,7 @@
             console.log("trying connection to", host);
 
             // create the websocket
-            this.ws = new WebSocket("ws://"+host+":"+port+"/api/v1");
+            this.ws = new WebSocket("ws://" + host + ":" + port + "/api/v1");
 
             // we don't have a current connect timer
             this.reconnect_timer = 0;
@@ -33,16 +33,20 @@
                     return;
                 }
 
-                console.log('connection closed, reconnecting in ' + this.reconnect_timeout + ' seconds');
-
                 // notify all listeners we are now disconnected
                 for (const callback of this.state_listeners) {
                     callback(false);
                 }
 
-                // re-attempt connection after the timeout and increase timeout
-                this.reconnect_timer = setTimeout(this.open_websocket, this.reconnect_timeout * 1000);
-                this.reconnect_timeout *= 2;
+                if (this.reconnect_timeout < 16) {
+                    console.log('connection closed, reconnecting in ' + this.reconnect_timeout + ' seconds');
+
+                    // re-attempt connection after the timeout and increase timeout
+                    this.reconnect_timer = setTimeout(this.open_websocket, this.reconnect_timeout * 1000);
+                    this.reconnect_timeout *= 2;
+                } else {
+                    console.log("Re-connection attempt quit");
+                }
             };
 
             // handle connection failure
@@ -53,16 +57,23 @@
                     return;
                 }
 
-                console.log('failed to connect, retrying in ' + this.reconnect_timeout + ' seconds');
 
                 // notify all listeners we are now disconnected
                 for (const callback of this.state_listeners) {
                     callback(false);
                 }
 
-                // re-attempt connection after the timeout and increase timeout
-                this.reconnect_timer = setTimeout(this.open_websocket, this.reconnect_timeout * 1000);
-                this.reconnect_timeout *= 2;
+                console.log("timer is now at: " + this.reconnect_timeout)
+                
+                if (this.reconnect_timeout < 16) {
+                    console.log('failed to connect, retrying in ' + this.reconnect_timeout + ' seconds');
+
+                    // re-attempt connection after the timeout and increase timeout
+                    this.reconnect_timer = setTimeout(this.open_websocket, this.reconnect_timeout * 1000);
+                    this.reconnect_timeout *= 2;
+                } else {
+                    console.log("Connection attempt quit");
+                }
             };
 
             // handler for connection success

@@ -1,18 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-  
 .nav { /* StickyNavbar container */
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all 0.1s linear;
-    z-index: 2000;
+    z-index: auto;
     background: transparent;
     width: 100%;
-    position: fixed;
     padding: 15px;
 }
 
@@ -21,9 +14,26 @@
 }
   
 .scrollNav { /* Actions when navbar begins to scroll (same level as .nav) */
-    transition: all 0.5s ease-in;
+    transition: all 0.2s ease-in;
     z-index: 2000;
     width: 100%;
     background: #024059;
-    border-bottom: 1px solid #E58900;
+    border-bottom: 2px solid #E58900;
+    border-bottom-style: groove;
+    position: fixed;
 }
+
+select {
+    background: transparent;
+    width: auto;
+}
+
+select option {
+    margin: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+

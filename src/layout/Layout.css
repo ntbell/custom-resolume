@@ -35,22 +35,55 @@ button {
   border-style: solid;
   border-width: 2px;
   border-radius: 5%;
-  width: 210px; /*Controls the size of the clips*/
+  padding: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  z-index: 1;
 }
 
 .connected { /* Action when clip is selected (same level as .clip) */
-  border-style: inset;
-  border-width: 4px;
-  border-color: #E58900;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #FFF801;
+  border-radius: 15%;
+  position: relative;
+  animation: animate 1.5s linear infinite;
+  z-index: 0;
 }
 
-.thumbnail { /* Container for image of clip */
-  max-width: 100%;
-  height: auto;
+.connected img {
+  border-radius: 15%;
+}
+
+@keyframes animate {
+  0% {
+      box-shadow: 0 0 0 0 #fff701aa, 0 0 0 0 #fff701aa
+  }
+
+  30% {
+      box-shadow: 0 0 0 15px rgb(255, 109, 74, 0), 0 0 0 0 #fff701aa
+  }
+
+  80% {
+      box-shadow: 0 0 0 0 rgb(255, 109, 74, 0), 0 0 0 20px rgb(255, 109, 74, 0)
+  }
+
+  100% {
+      box-shadow: 0 0 0 0 rgb(255, 109, 74, 0), 0 0 0 10px rgb(255, 109, 74, 0)
+  }
+}
+
+img { /* Container for image of clip */
+  object-fit: none;
+  width: 210px;
   padding: 0px;
   margin: 0px;
+  background-color: black;
 }
 
+.form-control {
+  width: 100%;
+}
 
 @media screen and (min-width: 768px) {
 

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Composition from "../dashboard/Composition";
 import ResolumeProvider from "../utils/resolume_provider";
+import Defaults from "./Defaults";
 import "./Layout.css";
 
 /**
@@ -11,25 +12,28 @@ import "./Layout.css";
  * @returns {JSX.Element}
  */
 function Layout() {
+  const [connection, setConnection] = useState({
+    host: "127.0.0.1",
+    port: "8080",
+    confirm: false
+  });
 
-  function get_option(production, development, fallback) {
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'production') {
-      return production;
-    } else if (development) {
-      return development;
-    } else {
-      return fallback;
-    }
+  function submitHandler() {
+    setConnection((prev) => ({...prev, confirm: true}));
   }
-
-  const host = get_option(window.location.hostname, process.env.REACT_APP_HOST, '127.0.0.1');
-  const port = parseInt(get_option(window.location.port, process.env.REACT_APP_PORT, 8080), 10);
 
   return (
     <div>
-      <ResolumeProvider host={host} port={port}>
-        <Composition host={host} port={port} />
-      </ResolumeProvider>
+      {connection.confirm ?
+        <ResolumeProvider connection={connection} >
+          <Composition connection={connection} setConnection={setConnection} />
+        </ResolumeProvider>
+        :
+        <Defaults connection={connection} setConnection={setConnection} onSubmit={submitHandler}>
+          <button type="submit" className="btn btn-sm btn-primary rounded">
+            <span className="oi oi-check" /> Submit
+          </button>
+        </Defaults>}
     </div>
   );
 }
