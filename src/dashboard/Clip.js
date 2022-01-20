@@ -11,30 +11,30 @@ function Clip(props) {
     const context = useContext(ResolumeContext);
 
     // define select and connection functions
-    const select    = ()        => { context.action('trigger', `/composition/clips/by-id/${props.id}/select`);          }
-    const connect   = (down)    => { context.action('trigger', `/composition/clips/by-id/${props.id}/connect`, down);   };
+    const select = () => { context.action('trigger', `/composition/clips/by-id/${props.id}/select`); }
+    const connect = (down) => { context.action('trigger', `/composition/clips/by-id/${props.id}/connect`, down); };
 
     /**
       * Connected has 5 possible states 
       * "Empty", "Disconnected", "Previewing", "Connected", "Connected & previewing"
       */
     const connected = props.connected.index >= 3;
-    const name      = props.name.value.length > 23 ? props.name.value.substring(0,22) + "..." : props.name.value;
-    const src       = context.clip_url(props.id, props.last_update);
+    const name = props.name.value.length > 23 ? props.name.value.substring(0, 22) + "..." : props.name.value;
+    const src = context.clip_url(props.id, props.last_update);
 
     return (
-        <div>              
-            <div className={`clip ${connected ? 'connected' : 'none'}`}>
-                <img className="thumbnail"
-                    src={src}
-                    onMouseDown={() => connect(true)}
-                    onMouseUp={() => connect(false)}
-                    alt={props.name.value}
-                />                
-            </div>              
+        <div className={`clip ${connected ? 'connected' : 'none'}`}>
+            <img className="thumbnail"
+                src={src}
+                onMouseDown={() => connect(true)}
+                onMouseUp={() => connect(false)}
+                alt={props.name.value}
+            />
+            {/*           
             <div className={`handle ${props.selected.value ? 'selected' : ''}`} onMouseDown={select}>
                 {name}
             </div>
+            */}
         </div>
     )
 }

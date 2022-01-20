@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import { ResolumeContext } from "../utils/resolume_provider";
-import TempoControl from "./TempoControl";
+import Effects from "./Effects";
 import Clips from "./Clips";
-import ParameterMonitor from "../utils/parameter_monitor"; 
+import StickyNavbar from "../Navbar/StickyNavbar";
+import ParameterMonitor from "../utils/parameter_monitor";
 
 /**
  * Component that renders the entire composition
@@ -15,16 +16,17 @@ function Composition() {
             context.composition.layers.map(layer => layer.clips)    // extract array of layers into an array of array of clips
         ).filter(clip => clip.connected.index !== 0);               // filter out all clips which have connected.index set to 0
 
+        
+
+
+    //ToDo: Effects (composition -> video -> VideoTrack -> effects -> VideoEffect)
+    //ToDo: Clear all clips (POST /composition/layers/by-id/{layer-id}/clear})
     return (
         <main className="d-flex flex-column">
-            <div>
-                {context.composition.tempocontroller.tempo &&
-                    <TempoControl tempocontroller={context.composition.tempocontroller} />}
-                { }
+            <StickyNavbar tempocontroller={context.composition.tempocontroller} layer={context.composition.layers[0]} />
+            <div className="border border-black">
             </div>
-            <div className="d-flex flex-row">
-                <Clips clips={clips} />
-            </div>
+            <Clips clips={clips} />
         </main>
     );
 

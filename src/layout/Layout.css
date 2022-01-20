@@ -1,11 +1,56 @@
-p {
-  color: black;
+* {
+  color: #F6F6FE;
+  font-size: 17px;
 }
 
-.tempo_control {
-  display: flex;
-  flex: row;
+main {
+  background: #010326;
 }
+
+input {
+  background: darkgrey;
+  width: 50px;
+  text-align: center;
+}
+
+button {
+  background: darkgrey;
+}
+
+.tempo_control { /* Container for TempoControl items */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.clips { /* Container for all clips */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.clip { /* Container for each clip */
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5%;
+  width: 210px; /*Controls the size of the clips*/
+}
+
+.connected { /* Action when clip is selected (same level as .clip) */
+  border-style: inset;
+  border-width: 4px;
+  border-color: #E58900;
+}
+
+.thumbnail { /* Container for image of clip */
+  max-width: 100%;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+}
+
 
 @media screen and (min-width: 768px) {
 

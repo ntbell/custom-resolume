@@ -1,7 +1,7 @@
 import React from "react";
 import Clip from "./Clip";
 
-function Clips({ active_color, clips, colorids }) {
+function Clips({ clips }) {
     const output = clips.map((clip) =>
         <Clip
             id={clip.id}

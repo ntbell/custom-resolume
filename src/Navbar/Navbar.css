@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+.nav { /* StickyNavbar container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.1s linear;
+    z-index: 2000;
+    background: transparent;
+    width: 100%;
+    position: fixed;
+    padding: 15px;
+}
+
+.nav p {
+    background: transparent;
+}
+  
+.scrollNav { /* Actions when navbar begins to scroll (same level as .nav) */
+    transition: all 0.5s ease-in;
+    z-index: 2000;
+    width: 100%;
+    background: #024059;
+    border-bottom: 1px solid #E58900;
+}
