@@ -29,6 +29,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 285px; /* Adjust this when StickyNavbar component changes size */
 }
 
 .clip { /* Container for each clip */
@@ -39,6 +40,10 @@ button {
   margin-top: 5px;
   margin-bottom: 5px;
   z-index: 1;
+  width: 47%;
+  height: auto;  
+  text-align: center;
+  background-color: black;
 }
 
 .connected { /* Action when clip is selected (same level as .clip) */
@@ -75,10 +80,10 @@ button {
 
 img { /* Container for image of clip */
   object-fit: none;
-  width: 210px;
   padding: 0px;
   margin: 0px;
   background-color: black;
+  max-width: 100%;
 }
 
 .form-control {

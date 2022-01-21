@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 function StickyNavbar({ tempocontroller, layer }) {
     const [show, setShow] = useState(false);
-    const handleScroll = () => setShow(window.pageYOffset > 50);
+    const handleScroll = () => setShow(window.pageYOffset > 0);
 
     useEffect(() => window.addEventListener("scroll", handleScroll), []);
 

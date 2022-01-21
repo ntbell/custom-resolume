@@ -12,11 +12,10 @@ import "./Layout.css";
  * @returns {JSX.Element}
  */
 function Layout() {
-  const REACT_HOST = process.env.REACT_HOST;
-  const REACT_PORT = process.env.REACT_PORT;
+  const { REACT_APP_HOST, REACT_APP_PORT } = process.env;
   const [connection, setConnection] = useState({
-    host: REACT_HOST || "127.0.0.1",
-    port: REACT_PORT || "8080",
+    host: REACT_APP_HOST || "127.0.0.1",
+    port: REACT_APP_PORT || "8080",
     confirm: false
   });
 
