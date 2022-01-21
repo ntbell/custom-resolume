@@ -10,6 +10,7 @@ class Transport {
         // initialize empty listeners and state listeners
         this.listeners = [];
         this.state_listeners = [];
+        this.protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 
         // in case of connection failure, we will retry
         // to connect with an increasing timeout
@@ -21,7 +22,8 @@ class Transport {
             console.log("trying connection to", host);
 
             // create the websocket
-            this.ws = new WebSocket("ws://" + host + ":" + port + "/api/v1");
+            //this.ws = new WebSocket("ws://" + host + ":" + port + "/api/v1");
+            this.ws = new WebSocket(`${this.protocol}://${host}:${port}/api/v1`);
 
             // we don't have a current connect timer
             this.reconnect_timer = 0;
