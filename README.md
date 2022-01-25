@@ -36,10 +36,10 @@ This project aims to simplify and streamline usage of a few main features of Res
 ![Adding clips](/screenshots/computer-view-2.png "Adding clips")
 
 ### Mobile view
-![Phone app 1](/screenshots/phone-app-1.png "Mobile view")
+<img src="/screenshots/phone-app-1.PNG" alt="Mobile view" width="300"/>
 
 ### Mobile view scroll
-![Phone app 2](/screenshots/phone-app-2.png "Mobile view scroll")
+<img src="/screenshots/phone-app-2.PNG" alt="Mobile view scroll" width="300"/>
 
 ## Technology
 
