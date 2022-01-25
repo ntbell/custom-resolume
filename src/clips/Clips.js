@@ -18,11 +18,7 @@ function Clips({ clips }) {
             <div className="clips">
                 {output}
             </div>
-            {clips.length === 0 &&
-                <div className="message">
-                    <h2>Add clips and they will be shown here.</h2>                  
-                </div>
-            }
+            {clips.length === 0 && <h2>Add clips and they will be shown here.</h2>}
         </>
     );
 }

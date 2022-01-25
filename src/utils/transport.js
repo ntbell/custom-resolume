@@ -40,6 +40,7 @@ class Transport {
                     callback(false);
                 }
 
+                //ToDo: Close the connection gracefully after a set amount of time
                 if (this.reconnect_timeout < 16) {
                     console.log('connection closed, reconnecting in ' + this.reconnect_timeout + ' seconds');
 
@@ -66,7 +67,8 @@ class Transport {
                 }
 
                 console.log("timer is now at: " + this.reconnect_timeout)
-                
+
+                //ToDo: Close the connection gracefully after a set amount of time
                 if (this.reconnect_timeout < 16) {
                     console.log('failed to connect, retrying in ' + this.reconnect_timeout + ' seconds');
 

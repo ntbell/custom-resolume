@@ -27,7 +27,7 @@ function Layout() {
     <div>
       {connection.confirm ?
         <ResolumeProvider connection={connection} >
-          <Composition connection={connection} setConnection={setConnection} />
+          <Composition connection={connection} />
         </ResolumeProvider>
         :
         <Defaults connection={connection} setConnection={setConnection} onSubmit={submitHandler}>

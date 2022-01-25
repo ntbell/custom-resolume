@@ -1,8 +1,11 @@
 import React from "react";
 import Parameter from "../utils/parameter";
 
+/**
+ * Controls the BPM and all buttons associated with changing it.
+ * @param { tempocontroller }
+ */
 function TempoControl({ tempocontroller }) {
-
     return (
         <div className="tempo_control">
             <div>

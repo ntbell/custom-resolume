@@ -3,15 +3,16 @@ import { ResolumeContext } from "../utils/resolume_provider";
 import ParameterMonitor from "../utils/parameter_monitor";
 import Parameter from "../utils/parameter";
 
-
+//ToDo: Add a few default FX (polark, mirror, mirrorquad, ..?)
+//ToDo: Add FX customization tool
 function Effects({ layer }) {
     const context = useContext(ResolumeContext);
 
-    //const set_bypass = bypassed => context.parameters.update_parameter(layer.bypassed.id, bypassed);
-   // const set_autopilot = autopilot => context.parameters.update_parameter(layer.autopilot, autopilot);
     const clear = () => context.action('trigger', `/composition/layers/by-id/${layer.id}/clear`);
     const handle_reset = (id) => { context.parameters.reset_parameter(id); }
     
+    //Autopilot functionality
+    //ToDo: Break into own component
     let autopilot = null;
     if (layer.autopilot) {
         autopilot = (
@@ -27,6 +28,8 @@ function Effects({ layer }) {
         );
     }
 
+    //Clip transition functionality (Duration & Blend Mode)
+    //ToDo: Break into own component
     let transition = null;
     if (layer.transition) {
         transition = (
@@ -53,24 +56,11 @@ function Effects({ layer }) {
         );
     }  
 
-
-    
-    //Get effects pre-loaded into layer (or load effects manually?)
-    //Turn into buttons
-    /*  
-    layer.audio
-    layer.autopilot
-    layer.bypassed
-    layer.transition
-    */
     return (
         <>
             <div className={`btn btn-danger`} onClick={clear}>Clear Clip</div>
             {autopilot}
             {transition}
-            {/* <ParameterMonitor.Single parameter={layer.bypassed} render={bypassed => (
-                <div className={`button ${bypassed.value ? 'on' : 'off'}`} onMouseDown={() => set_bypass(!bypassed.value)}>Mute Display</div>
-            )} /> */}
         </>
     );
 }

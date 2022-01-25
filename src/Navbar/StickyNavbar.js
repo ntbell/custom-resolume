@@ -3,6 +3,12 @@ import TempoControl from "../dashboard/TempoControl";
 import Effects from "../dashboard/Effects";
 import "./Navbar.css";
 
+/**
+ * Navbar-esque component that sticks to the top of the screen while scrolling,
+ * and displays buttons that control the clips (effects, bpm, autopilot, etc.)
+ * @param { tempocontroller, layer } param0 
+ * @returns 
+ */
 function StickyNavbar({ tempocontroller, layer }) {
     const [show, setShow] = useState(false);
     const handleScroll = () => setShow(window.pageYOffset > 0);
