@@ -3,7 +3,7 @@ import { ResolumeContext } from "../utils/resolume_provider";
 import Parameter from "../utils/parameter";
 
 /**
- * Displays current info on very top banner
+ * Displays current info on very top strip of navbar
  * @param {layer, tempocontroller} param0 
  * @returns 
  */
@@ -26,7 +26,7 @@ function InfoBanner({ layer, tempocontroller, transition }) {
                 BPM
             </span>
         </div>);
-    return ({output});
+    return (<>{output}</>);
 }
 
 export default InfoBanner;

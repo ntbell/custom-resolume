@@ -1,6 +1,9 @@
 import React from "react";
 import Clip from "./Clip";
 
+/**
+  * Component for rendering all clips
+*/
 function Clips({ clips }) {
     const output = clips.map((clip) =>
         <Clip

@@ -8,6 +8,7 @@ import StickyNavbar from "../Navbar/StickyNavbar";
  */
 function Composition({ connection }) {
     const context = useContext(ResolumeContext);
+    console.log(connection);
 
     const clips =
         Array.prototype.concat.apply([],                            // concatenate all arrays (which contain clips)

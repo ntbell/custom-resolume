@@ -6,7 +6,6 @@ import Transition from "../dashboard/Transition";
 import TempoControl from "../dashboard/TempoControl";
 
 //ToDo: Add a few default FX (polark, mirror, mirrorquad, ..?)
-//ToDo: Add FX customization tool
 function Effects({ layer }) {
     const context = useContext(ResolumeContext);
 

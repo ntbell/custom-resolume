@@ -4,7 +4,6 @@ import ParameterMonitor from './parameter_monitor.js'
 import PropTypes from 'prop-types';
 import Rotary from './rotary.js';
 import { useDebouncedCallback } from 'use-debounce';
-//ToDo: debouncer might be broken in some instances --> removed class and turned into functional
 
 /**
  *  Intercept and monitor changes to submit when
@@ -357,7 +356,6 @@ function Parameter(props) {
                     </button>
                 )
             } else if (param.valuetype === "ParamEvent") {
-                console.log("ParamEvent");
                 return (
                     <ParamEvent
                         parameter={param}
@@ -368,7 +366,6 @@ function Parameter(props) {
                     />
                 )
             } else if (param.valuetype === "ParamBoolean") {
-                console.log("ParamBoolean");
                 return (
                     <ParamBoolean
                         parameter={param}
@@ -379,7 +376,6 @@ function Parameter(props) {
                     />
                 )
             } else if (param.valuetype === "ParamRange") {
-                console.log("ParamRange");
                 return (
                     <ParamRange
                         parameter={param}
@@ -392,7 +388,6 @@ function Parameter(props) {
                     />
                 )
             } else if (param.valuetype === "ParamChoice") {
-                console.log("ParamChoice");
                 return (
                     <ParamChoice
                         parameter={param}
@@ -403,7 +398,6 @@ function Parameter(props) {
                     />
                 )
             } else if (param.valuetype === "ParamColor") {
-                console.log("ParamColor");
                 return (
                     <ParamColor
                         parameter={param}
@@ -414,7 +408,6 @@ function Parameter(props) {
                     />
                 )
             } else {
-                console.log("ParamString");
                 return (
                     <ParamString
                         parameter={param}

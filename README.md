@@ -51,7 +51,9 @@ Add 4 default effects with on/off functionality: strobe clip, mirror/mirror quad
 
 Add default white strobe @ current bpm clip to all compositions
 
-May want to remove 'Clear clip' button and replace with functionality that allows user to click on selected clip again to deselect it.
+May want to remove 'Clear clip' button and replace with functionality that allows user to click on selected clip again to deselect it
+
+May add live composition view if supported by API.\
 
 ## Known Issues
 
@@ -69,5 +71,5 @@ Make sure that your computer and device are both connected to the same network
 
 ## Technology
 
-This project is a mobile-focused app developed using React, Node, & Bootstrap.
+This project is a mobile-focused app developed using JavaScript, React, Node, Bootstrap, CSS, & HTML.
 

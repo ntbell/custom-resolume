@@ -4,7 +4,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { ResolumeContext } from './resolume_provider.js'
 
-
 /**
  *  Internal monitor class
  *

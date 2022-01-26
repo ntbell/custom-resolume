@@ -45,7 +45,6 @@ function ResolumeProvider({ connection, children }) {
                 /* check if message contains a composition, does it have columns and layers */
                 if (message.columns && message.layers)
                 {
-                    //console.log('state update', message);
                     setComposition(message);
                 }
                 else
