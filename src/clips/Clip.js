@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { ResolumeContext } from '../utils/resolume_provider';
 import PropTypes from 'prop-types';
-import Parameter from "../utils/parameter";
 
 /**
   * Component for rendering a clip, responds to clicks
@@ -37,7 +36,7 @@ function Clip(props) {
             {name}
             */}
     </div>
-  )
+  );
 }
 
 /**
@@ -47,7 +46,7 @@ Clip.propTypes = {
   last_update: PropTypes.string.isRequired,
   name: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
-  transporttype: PropTypes.object.isRequired  
+  transporttype: PropTypes.object.isRequired
 }
 
 export default Clip;

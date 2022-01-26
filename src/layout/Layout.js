@@ -12,15 +12,15 @@ import "./Layout.css";
  * @returns {JSX.Element}
  */
 function Layout() {
-  const { REACT_APP_HOST, REACT_APP_PORT } = process.env;
   const [connection, setConnection] = useState({
-    host: REACT_APP_HOST || "127.0.0.1",
-    port: REACT_APP_PORT || "8080",
+    host: window.location.hostname,
+    port: "8080",
     confirm: false
   });
 
   function submitHandler() {
     setConnection((prev) => ({...prev, confirm: true}));
+    console.log(window.location.href);
   }
 
   return (

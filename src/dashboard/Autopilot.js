@@ -25,12 +25,7 @@ function Autopilot({ autopilot }) {
             </div>
         );
     }
-
-    return (
-        <>
-            {output}
-        </>
-    );
+    return (<>{output}</>);
 }
 
 export default Autopilot;

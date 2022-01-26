@@ -27,9 +27,10 @@ function Defaults({ connection, setConnection, onSubmit, children }) {
             <ErrorAlert error={connection.message} />
             <p>1. Go to Resolume Arena on your computer</p>
             <p>2. Click "Arena" -> "Preferences" -> "Webserver"</p>
-            <p>3. Enter IP Address and Listen Port</p>
-            <p>4. Submit</p>
-            <p>5. Drag clips into layer 1</p>
+            <p>3. Click "Enable Webserver & REST API"</p>
+            <p>4. Enter webserver connection details</p>
+            <p>5. Submit</p>
+            <p>6. Drag clips into layer 1</p>
             <form onSubmit={submitHandler} className="text-center">
                 <div className="form-group">
                     <label htmlFor="host">IP Address:</label>

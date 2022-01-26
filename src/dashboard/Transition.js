@@ -28,25 +28,20 @@ function Transition({ transition }) {
                     <Parameter
                         name="Duration"
                         parameter={transition.duration}
-                        label="Transition -1s"
-                        modifier={value => value - 1}
+                        label="Transition -0.5s"
+                        modifier={value => value - 0.5}
                     />
                     <Parameter
                         name="Duration"
                         parameter={transition.duration}
-                        label="Transition +1s"
-                        modifier={value => value + 1}
+                        label="Transition +0.5s"
+                        modifier={value => value + 0.5}
                     />
                 </div>
             </>
         );
     }
-
-    return (
-        <>
-            {output}
-        </>
-    );
+    return (<>{output}</>);
 }
 
 export default Transition;

@@ -11,7 +11,7 @@ function InfoBanner({ layer, tempocontroller, transition }) {
     const context = useContext(ResolumeContext);
     const clear = () => context.action('trigger', `/composition/layers/by-id/${layer.id}/clear`);
 
-    return (
+    const output = (
         <div className="effect-item mb-3 align-top">
             <div role="button" className={`btn btn-danger`} onClick={clear}>Clear Clip</div>
             <span className="banner-display">Transition: {transition.duration.value}s</span>
@@ -25,8 +25,8 @@ function InfoBanner({ layer, tempocontroller, transition }) {
                 />
                 BPM
             </span>
-        </div>
-    );
+        </div>);
+    return ({output});
 }
 
 export default InfoBanner;
