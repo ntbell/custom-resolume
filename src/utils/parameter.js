@@ -90,7 +90,7 @@ function ParamString(props) {
 
     //const debouncer = useRef(new value_debouncer(on_update, setValue));
     //const debouncer = useRef(new value_debouncer(updater, displayer));
-    
+
     return (
         <span className="parameter">
             <input
@@ -234,28 +234,13 @@ function ParamRange(props) {
                 <input
                     type="text"
                     value={((value !== undefined) ? value : parameter.value) * multiplier}
-                    //value={(value || parameter.value) * multiplier} //TEST
+                    //value={(value || parameter.value) * multiplier} //TEST this code before adding
                     onChange={(event) => monitor.current.set_value(event.target.value)}
                     onKeyPress={handler}
                     onBlur={() => monitor.current.confirm()}
                 />
             </span>
-            );
-                /** For +/- buttons on BPM
-                <Parameter
-                    name={props.name}
-                    parameter={parameter}
-                    label="-"
-                    modifier={value => value - step}
-                />
-
-                <Parameter
-                    name={props.name}
-                    parameter={parameter}
-                    label="+"
-                    modifier={value => value + step}
-                />
-                **/
+        );
     }
 
     const view_type = props.view_type || "range";
@@ -367,11 +352,9 @@ function Parameter(props) {
                 };
 
                 return (
-                    <span>
-                        <button onClick={handle_click}>
-                            {props.label}
-                        </button>
-                    </span>
+                    <button onClick={handle_click}>
+                        {props.label}
+                    </button>
                 )
             } else if (param.valuetype === "ParamEvent") {
                 console.log("ParamEvent");

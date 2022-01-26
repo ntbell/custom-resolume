@@ -8,8 +8,8 @@ function Clips({ clips }) {
             key={clip.id}
             name={clip.name}
             last_update={clip.thumbnail.last_update}
-            selected={clip.selected}
             connected={clip.connected}
+            transporttype={clip.transporttype}
         />
     );
 

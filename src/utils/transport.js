@@ -96,7 +96,7 @@ class Transport {
             this.ws.onmessage = (data) => {
                 try {
                     const message = JSON.parse(data.data);
-                    // console.log('receiving message', message);
+                    //console.log('receiving message', message);
                     for (const listener of this.listeners) {
                         listener(message);
                     }

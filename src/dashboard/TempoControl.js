@@ -7,90 +7,52 @@ import Parameter from "../utils/parameter";
  */
 function TempoControl({ tempocontroller }) {
     return (
-        <div className="tempo_control">
-            <div>
-                <span>
-                    BPM
-                    <Parameter
-                        view_type="number"
-                        view={{ control_type: 'spinner' }}
-                        name="BPM"
-                        parameter={tempocontroller.tempo}
-                        hidelabel="yes"
-                    />
-                </span>
-                <span>
+        <div className="effect-item">
+            <div className="d-flex flex-column w-100">
+                <div className="d-flex">
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="-1"
                         modifier={value => value - 1}
                     />
-                </span>
-                <span>
+                    <Parameter
+                        name="RESYNC"
+                        parameter={tempocontroller.resync}
+                    />
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="+1"
                         modifier={value => value + 1}
                     />
-                </span>
-                <span>
-                    <Parameter
-                        name="BPM"
-                        parameter={tempocontroller.tempo}
-                        label="/2"
-                        modifier={value => value / 2}
-                    />
-                </span>
-                <span>
-                    <Parameter
-                        name="BPM"
-                        parameter={tempocontroller.tempo}
-                        label="x2"
-                        modifier={value => value * 2}
-                    />
-                </span>
-                <span>
-                    <Parameter
-                        name="RESYNC"
-                        parameter={tempocontroller.resync}
-                    />
-                </span>
-            </div>
-            <div>
-                <span>
+                </div>
+                <div className="d-flex w-100">
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="128"
                         modifier={value => value = 128}
                     />
-                </span>
-                <span>
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="140"
                         modifier={value => value = 140}
                     />
-                </span>
-                <span>
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="150"
                         modifier={value => value = 150}
                     />
-                </span>
-                <span>
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="174"
                         modifier={value => value = 174}
                     />
-                </span>
+                </div>
             </div>
         </div>
     );

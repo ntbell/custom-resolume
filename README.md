@@ -31,15 +31,11 @@ This project aims to simplify and streamline usage of a few main features of Res
 ### Computer view
 ![Computer view 1](/screenshots/computer-view-1.png "Resolume computer view")
 
-
 ### Adding clips
 ![Adding clips](/screenshots/computer-view-2.png "Adding clips")
 
 ### Mobile view
-<img src="/screenshots/phone-app-1.PNG" alt="Mobile view" width="300"/>
-
-### Mobile view scroll
-<img src="/screenshots/phone-app-2.PNG" alt="Mobile view scroll" width="300"/>
+![Mobile view](https://media.giphy.com/media/wbNnihaZsPI6sPn0d6/giphy.gif)
 
 ## Technology
 

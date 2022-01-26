@@ -1,6 +1,8 @@
 * {
   color: #F6F6FE;
   font-size: 17px;
+  font-family: Nunito, sans-serif, arial;
+  box-sizing: border-box;
 }
 
 main {
@@ -8,28 +10,41 @@ main {
 }
 
 input {
-  background: darkgrey;
-  width: 50px;
+  background: transparent;
+  min-height: 40px;
   text-align: center;
+  font-weight: bold;
+  width: 33%;
+}
+
+select {
+  text-align: center;
+  padding-left: 15px;  /* Accounts for dropdown icon */
+  min-height: 40px;
+  width: 33%;
 }
 
 button {
-  background: darkgrey;
+  display: block;
+  width: 100%;
+  border: 1px solid white;
+  background-color: transparent;
+  font-weight: bold;
+  min-height: 40px;
+  border-color: white;
 }
 
-.tempo_control { /* Container for TempoControl items */
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+button:hover,
+button:active {
+  background-color: white;
+  color: black;
 }
 
 .clips { /* Container for all clips */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 285px; /* Adjust this when StickyNavbar component changes size */
+  margin-top: 275px; /* Adjust this when StickyNavbar component changes size */
 }
 
 .clip { /* Container for each clip */
@@ -88,6 +103,31 @@ img { /* Container for image of clip */
 
 .form-control {
   width: 100%;
+}
+
+.effect-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.effect-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.banner-display {
+  font-size: 20px;
+  align-self: center;
+}
+
+.banner-display input {
+  border: none;
+  font-weight: normal;
+  width: 45px;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 @media screen and (min-width: 768px) {

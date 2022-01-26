@@ -19,7 +19,7 @@ function Composition({ connection }) {
             <main className="d-flex flex-column">
                 {context.connected ?
                     (<>
-                        <StickyNavbar tempocontroller={context.composition.tempocontroller} layer={context.composition.layers[0]} />
+                        <StickyNavbar layers={context.composition.layers} />
                         <Clips clips={clips} />
                     </>) : (<p>loading...</p>)
                 }
