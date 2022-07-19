@@ -1,13 +1,8 @@
 import React from "react";
 import ErrorAlert from "./ErrorAlert";
 
-/**
- * Displays a screen with instructions for how to use the app,
- * along with input fields for the webserver connection
- * @param { connection, setConnection, onSubmit, children }  
- */
+// Displays a screen with instructions for using the app & input fields for connection
 function Defaults({ connection, setConnection, onSubmit, children }) {
-
     function changeHandler({ target: { name, value } }) {
         setConnection((previous) => ({
             ...previous,
@@ -20,8 +15,8 @@ function Defaults({ connection, setConnection, onSubmit, children }) {
         onSubmit();
     }
 
-    //ToDo: Explain steps more clearly. 
-    //What address to type into browser on mobile?
+    // ToDo: Explain steps more clearly. How to make extremely easy?
+    // ToDo: What address to type into browser on mobile?
     return (
         <main className="p-2">
             <ErrorAlert error={connection.message} />

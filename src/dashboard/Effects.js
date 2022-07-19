@@ -11,10 +11,16 @@ function Effects({ layer }) {
 
     return (
         <div className="effect-container">
-            <InfoBanner layer={layer} tempocontroller={context.composition.tempocontroller} transition={layer.transition} />
+            <InfoBanner
+                layer={layer}
+                tempocontroller={context.composition.tempocontroller}
+                transition={layer.transition}
+            />
             <Autopilot autopilot={layer.autopilot} />
             <Transition transition={layer.transition} />
-            <TempoControl tempocontroller={context.composition.tempocontroller} />
+            <TempoControl
+                tempocontroller={context.composition.tempocontroller}
+            />
         </div>
     );
 }

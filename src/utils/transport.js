@@ -2,15 +2,15 @@
 //https://gitlab.resolume.com/public-resolume/arena-rest-example/-/blob/master/src/transport.js
 
 /**
-  * Class maintaining the websocket transport
-  * to the arena webserver
-  */
+ * Class maintaining the websocket transport
+ * to the arena webserver
+ */
 class Transport {
     constructor(host, port) {
         // initialize empty listeners and state listeners
         this.listeners = [];
         this.state_listeners = [];
-        this.protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        this.protocol = window.location.protocol === "https:" ? "wss" : "ws";
 
         // in case of connection failure, we will retry
         // to connect with an increasing timeout
@@ -23,7 +23,9 @@ class Transport {
 
             // create the websocket
             //this.ws = new WebSocket("ws://" + host + ":" + port + "/api/v1");
-            this.ws = new WebSocket(`${this.protocol}://${host}:${port}/api/v1`);
+            this.ws = new WebSocket(
+                `${this.protocol}://${host}:${port}/api/v1`
+            );
 
             // we don't have a current connect timer
             this.reconnect_timer = 0;
@@ -42,10 +44,17 @@ class Transport {
 
                 //ToDo: Close the connection gracefully after a set amount of time
                 if (this.reconnect_timeout < 16) {
-                    console.log('connection closed, reconnecting in ' + this.reconnect_timeout + ' seconds');
+                    console.log(
+                        "connection closed, reconnecting in " +
+                            this.reconnect_timeout +
+                            " seconds"
+                    );
 
                     // re-attempt connection after the timeout and increase timeout
-                    this.reconnect_timer = setTimeout(this.open_websocket, this.reconnect_timeout * 1000);
+                    this.reconnect_timer = setTimeout(
+                        this.open_websocket,
+                        this.reconnect_timeout * 1000
+                    );
                     this.reconnect_timeout *= 2;
                 } else {
                     console.log("Re-connection attempt quit");
@@ -60,20 +69,26 @@ class Transport {
                     return;
                 }
 
-
                 // notify all listeners we are now disconnected
                 for (const callback of this.state_listeners) {
                     callback(false);
                 }
 
-                console.log("timer is now at: " + this.reconnect_timeout)
+                console.log("timer is now at: " + this.reconnect_timeout);
 
                 //ToDo: Close the connection gracefully after a set amount of time
                 if (this.reconnect_timeout < 16) {
-                    console.log('failed to connect, retrying in ' + this.reconnect_timeout + ' seconds');
+                    console.log(
+                        "failed to connect, retrying in " +
+                            this.reconnect_timeout +
+                            " seconds"
+                    );
 
                     // re-attempt connection after the timeout and increase timeout
-                    this.reconnect_timer = setTimeout(this.open_websocket, this.reconnect_timeout * 1000);
+                    this.reconnect_timer = setTimeout(
+                        this.open_websocket,
+                        this.reconnect_timeout * 1000
+                    );
                     this.reconnect_timeout *= 2;
                 } else {
                     console.log("Connection attempt quit");
@@ -82,7 +97,7 @@ class Transport {
 
             // handler for connection success
             this.ws.onopen = () => {
-                console.log('websocket connection established');
+                console.log("websocket connection established");
 
                 // notify all listeners we are now disconnected
                 for (const callback of this.state_listeners) {
@@ -101,7 +116,7 @@ class Transport {
                         listener(message);
                     }
                 } catch (error) {
-                    console.log('invalid message', data.data);
+                    console.log("invalid message", data.data);
                 }
             };
         };
@@ -111,9 +126,9 @@ class Transport {
     }
 
     /**
-      * If we are not currently connected, immediately
-      * try a reconnect and reset the timeout
-      */
+     * If we are not currently connected, immediately
+     * try a reconnect and reset the timeout
+     */
     reconnect_now() {
         // do we have a current timer for performing reconnect?
         if (this.reconnect_timer) {
@@ -125,20 +140,20 @@ class Transport {
     }
 
     /**
-      * Register a callback handler to
-      * retrieve messages sent by the server
-      *
-      * @param  callback    The callback to invoke
-      */
+     * Register a callback handler to
+     * retrieve messages sent by the server
+     *
+     * @param  callback    The callback to invoke
+     */
     on_message(callback) {
         this.listeners.push(callback);
     }
 
     /**
-      * Send a message to the server
-      *
-      * @param  message     The message to send
-      */
+     * Send a message to the server
+     *
+     * @param  message     The message to send
+     */
     send_message(message) {
         // console.log('sending message', message);
         this.ws.send(JSON.stringify(message));

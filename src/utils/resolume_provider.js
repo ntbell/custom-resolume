@@ -1,20 +1,20 @@
 //Source:
 //https://gitlab.resolume.com/public-resolume/arena-rest-example/-/blob/master/src/resolume_provider.js
 
-import React, { useState, createContext } from 'react';
-import Transport from './transport.js'
-import ParameterContainer from './parameter_container.js'
+import React, { useState, createContext } from "react";
+import Transport from "./transport.js";
+import ParameterContainer from "./parameter_container.js";
 
 export const ResolumeContext = createContext();
 
 function ResolumeProvider({ connection, children }) {
     // the default product info if we are not connected to a backend
     const default_product = {
-        name: '(disconnected)',
+        name: "(disconnected)",
         major: 0,
         minor: 0,
         micro: 0,
-        revision: 0
+        revision: 0,
     };
 
     // the default composition to use when disconnected
@@ -25,13 +25,13 @@ function ResolumeProvider({ connection, children }) {
         decks: [],
         layers: [],
         columns: [],
-        layergroups: []
+        layergroups: [],
     };
 
     // store the composition, give an initial value
-    const [ composition, setComposition ]   = useState(default_composition);
-    const [ connected, setConnected ]       = useState(false);
-    const [ product, setProduct ]           = useState(default_product);
+    const [composition, setComposition] = useState(default_composition);
+    const [connected, setConnected] = useState(false);
+    const [product, setProduct] = useState(default_product);
 
     // create a new transport and register connection state listeners
     const create_transport = () => {
@@ -39,21 +39,22 @@ function ResolumeProvider({ connection, children }) {
         let transport = new Transport(connection.host, connection.port);
 
         // maintain updated state
-        transport.on_message(message => {
+        transport.on_message((message) => {
             // TODO: properly check the type, right now it's only for param updates
-            if (typeof message.type !== 'string') {
+            if (typeof message.type !== "string") {
                 /* check if message contains a composition, does it have columns and layers */
-                if (message.columns && message.layers)
-                {
+                if (message.columns && message.layers) {
                     setComposition(message);
-                }
-                else
-                    console.log('state does not contain a composition', message);
+                } else
+                    console.log(
+                        "state does not contain a composition",
+                        message
+                    );
             }
         });
 
         // register state handler
-        transport.on_connection_state_change(is_connected => {
+        transport.on_connection_state_change((is_connected) => {
             // update connection state
             setConnected(is_connected);
 
@@ -61,12 +62,15 @@ function ResolumeProvider({ connection, children }) {
             if (is_connected) {
                 let xhr = new XMLHttpRequest();
 
-                xhr.addEventListener('load', event => {
+                xhr.addEventListener("load", (event) => {
                     const product = JSON.parse(xhr.responseText);
-                    setProduct(product)
+                    setProduct(product);
                 });
 
-                xhr.open('GET', `//${connection.host}:${connection.port}/api/v1/product`);
+                xhr.open(
+                    "GET",
+                    `//${connection.host}:${connection.port}/api/v1/product`
+                );
                 xhr.send();
             } else {
                 setComposition(default_composition);
@@ -78,15 +82,17 @@ function ResolumeProvider({ connection, children }) {
         return transport;
     };
 
-    const [ transport ]     = useState(create_transport);
-    const [ parameters ]    = useState(() => { return new ParameterContainer(transport) });
+    const [transport] = useState(create_transport);
+    const [parameters] = useState(() => {
+        return new ParameterContainer(transport);
+    });
 
     // execute an action on a parameter
     const action = (type, path, value) => {
         // create the message
         let message = {
-            action:     type,
-            parameter:  path
+            action: type,
+            parameter: path,
         };
 
         // if a value is given it should be added to the message
@@ -108,20 +114,20 @@ function ResolumeProvider({ connection, children }) {
     };
 
     const properties = {
-        action,         // execute an action
-        composition,    // the current composition state
-        connected,      // whether we are currently connected to the server
-        parameters,     // the parameter collection
-        product,        // information on the product we are connected to
-        transport,      // the transport for communicating with the backend
-        clip_url        // get the url for a given clip
+        action, // execute an action
+        composition, // the current composition state
+        connected, // whether we are currently connected to the server
+        parameters, // the parameter collection
+        product, // information on the product we are connected to
+        transport, // the transport for communicating with the backend
+        clip_url, // get the url for a given clip
     };
 
     return (
         <ResolumeContext.Provider value={properties}>
             {children}
         </ResolumeContext.Provider>
-    )
+    );
 }
 
 export default ResolumeProvider;

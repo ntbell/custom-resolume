@@ -9,9 +9,14 @@ import React from "react";
  */
 
 function ErrorAlert({ error }) {
-  return (
-    (error && <div role="alert" className="alert alert-danger m-2">Error: {error.message}</div>) || (null)
-  );
+    return (
+        (error && (
+            <div role="alert" className="alert alert-danger m-2">
+                Error: {error.message}
+            </div>
+        )) ||
+        null
+    );
 }
 
 export default ErrorAlert;

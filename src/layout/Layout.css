@@ -1,135 +1,140 @@
 * {
-  color: #F6F6FE;
-  font-size: 17px;
-  font-family: Nunito, sans-serif, arial;
-  box-sizing: border-box;
+    color: #f6f6fe;
+    font-size: 17px;
+    font-family: Nunito, sans-serif, arial;
+    box-sizing: border-box;
 }
 
 main {
-  background: #010326;
+    background: #010326;
 }
 
 input {
-  background: transparent;
-  min-height: 40px;
-  text-align: center;
-  font-weight: bold;
-  width: 33%;
+    background: transparent;
+    min-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    width: 33%;
 }
 
 select {
-  text-align: center;
-  padding-left: 15px;  /* Accounts for dropdown icon */
-  min-height: 40px;
-  width: 33%;
+    text-align: center;
+    padding-left: 15px; /* Accounts for dropdown icon */
+    min-height: 40px;
+    width: 33%;
 }
 
 button {
-  display: block;
-  width: 100%;
-  border: 1px solid white;
-  background-color: transparent;
-  font-weight: bold;
-  min-height: 40px;
-  border-color: white;
+    display: block;
+    width: 100%;
+    border: 1px solid white;
+    background-color: transparent;
+    font-weight: bold;
+    min-height: 40px;
+    border-color: white;
 }
 
 button:hover,
 button:active {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
 
-.clips { /* Container for all clips */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 275px; /* Adjust this when StickyNavbar component changes size */
+.clips {
+    /* Container for all clips */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 275px; /* Adjust this when StickyNavbar component changes size */
 }
 
-.clip { /* Container for each clip */
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 5%;
-  padding: 0px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  z-index: 1;
-  width: 47%;
-  height: auto;  
-  text-align: center;
-  background-color: black;
+.clip {
+    /* Container for each clip */
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5%;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    z-index: 1;
+    width: 47%;
+    height: auto;
+    text-align: center;
+    background-color: black;
 }
 
-.connected { /* Action when clip is selected (same level as .clip) */
-  border-style: solid;
-  border-width: 2px;
-  border-color: #FFF801;
-  border-radius: 15%;
-  position: relative;
-  animation: animate 1.5s linear infinite;
-  z-index: 0;
+.connected {
+    /* Action when clip is selected (same level as .clip) */
+    border-style: solid;
+    border-width: 2px;
+    border-color: #fff801;
+    border-radius: 15%;
+    position: relative;
+    animation: animate 1.5s linear infinite;
+    z-index: 0;
 }
 
 .connected img {
-  border-radius: 15%;
+    border-radius: 15%;
 }
 
 @keyframes animate {
-  0% {
-      box-shadow: 0 0 0 0 #fff701aa, 0 0 0 0 #fff701aa
-  }
+    0% {
+        box-shadow: 0 0 0 0 #fff701aa, 0 0 0 0 #fff701aa;
+    }
 
-  30% {
-      box-shadow: 0 0 0 15px rgb(255, 109, 74, 0), 0 0 0 0 #fff701aa
-  }
+    30% {
+        box-shadow: 0 0 0 15px rgb(255, 109, 74, 0), 0 0 0 0 #fff701aa;
+    }
 
-  80% {
-      box-shadow: 0 0 0 0 rgb(255, 109, 74, 0), 0 0 0 20px rgb(255, 109, 74, 0)
-  }
+    80% {
+        box-shadow: 0 0 0 0 rgb(255, 109, 74, 0),
+            0 0 0 20px rgb(255, 109, 74, 0);
+    }
 
-  100% {
-      box-shadow: 0 0 0 0 rgb(255, 109, 74, 0), 0 0 0 10px rgb(255, 109, 74, 0)
-  }
+    100% {
+        box-shadow: 0 0 0 0 rgb(255, 109, 74, 0),
+            0 0 0 10px rgb(255, 109, 74, 0);
+    }
 }
 
-img { /* Container for image of clip */
-  object-fit: none;
-  padding: 0px;
-  margin: 0px;
-  background-color: black;
-  max-width: 100%;
+img {
+    /* Container for image of clip */
+    object-fit: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: black;
+    max-width: 100%;
 }
 
 .form-control {
-  width: 100%;
+    width: 100%;
 }
 
 .effect-item {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .effect-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .banner-display {
-  font-size: 20px;
-  align-self: center;
+    font-size: 20px;
+    align-self: center;
 }
 
 .banner-display input {
-  border: none;
-  font-weight: normal;
-  width: 45px;
-  font-size: 20px;
-  padding: 0;
-  margin: 0;
+    border: none;
+    font-weight: normal;
+    width: 45px;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 @media screen and (min-width: 768px) {
-
 }

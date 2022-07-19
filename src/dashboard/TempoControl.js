@@ -1,10 +1,7 @@
 import React from "react";
 import Parameter from "../utils/parameter";
 
-/**
- * Controls the BPM and all buttons associated with changing it.
- * @param { tempocontroller }
- */
+// Controls the BPM and all buttons associated with changing it
 function TempoControl({ tempocontroller }) {
     return (
         <div className="effect-item">
@@ -14,7 +11,7 @@ function TempoControl({ tempocontroller }) {
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="-1"
-                        modifier={value => value - 1}
+                        modifier={(value) => value - 1}
                     />
                     <Parameter
                         name="RESYNC"
@@ -24,7 +21,7 @@ function TempoControl({ tempocontroller }) {
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="+1"
-                        modifier={value => value + 1}
+                        modifier={(value) => value + 1}
                     />
                 </div>
                 <div className="d-flex w-100">
@@ -32,25 +29,25 @@ function TempoControl({ tempocontroller }) {
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="128"
-                        modifier={value => value = 128}
+                        modifier={(value) => (value = 128)}
                     />
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="140"
-                        modifier={value => value = 140}
+                        modifier={(value) => (value = 140)}
                     />
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="150"
-                        modifier={value => value = 150}
+                        modifier={(value) => (value = 150)}
                     />
                     <Parameter
                         name="BPM"
                         parameter={tempocontroller.tempo}
                         label="174"
-                        modifier={value => value = 174}
+                        modifier={(value) => (value = 174)}
                     />
                 </div>
             </div>

@@ -2,26 +2,35 @@
 //https://gitlab.resolume.com/public-resolume/arena-rest-example/-/blob/master/src/parameter_container.js
 
 /**
-  * Class maintaining a collection of monitored
-  * parameters. It can be used by registering a
-  * callback to be invoked for a given parameter.
-  */
+ * Class maintaining a collection of monitored
+ * parameters. It can be used by registering a
+ * callback to be invoked for a given parameter.
+ */
 class ParameterContainer {
     /**
-      * Constructor
-      *
-      * @param  transport   The transport for communicating with arena
-      */
+     * Constructor
+     *
+     * @param  transport   The transport for communicating with arena
+     */
     constructor(transport) {
         this.transport = transport;
         this.parameters = {};
 
         transport.on_message((message) => {
             // the event types we listen to
-            const event_types = ['parameter_get', 'parameter_set', 'parameter_update', 'parameter_subscribed'];
+            const event_types = [
+                "parameter_get",
+                "parameter_set",
+                "parameter_update",
+                "parameter_subscribed",
+            ];
 
             // is this a message containing parameter data
-            if (!event_types.includes(message.type) || typeof message.id !== 'number' || typeof message.value === 'undefined') {
+            if (
+                !event_types.includes(message.type) ||
+                typeof message.id !== "number" ||
+                typeof message.value === "undefined"
+            ) {
                 return;
             }
 
@@ -29,7 +38,7 @@ class ParameterContainer {
             let parameter = this.parameters[message.id];
 
             // do we have handlers for the given parameter?
-            if (typeof parameter === 'undefined') {
+            if (typeof parameter === "undefined") {
                 return;
             }
 
@@ -44,44 +53,43 @@ class ParameterContainer {
     }
 
     /**
-      * Send an update request for a parameter to the server
-      *
-      * @param  id      The parameter id
-      * @param  value   The new value for the parameter
-      */
+     * Send an update request for a parameter to the server
+     *
+     * @param  id      The parameter id
+     * @param  value   The new value for the parameter
+     */
     update_parameter(id, value) {
         // send message over the transport
         this.transport.send_message({
-            action: 'set',
+            action: "set",
             parameter: `/parameter/by-id/${id}`,
             value: value,
         });
     }
 
     /**
-      * Send an reset request for a parameter to the server
-      *
-      * @param  id      The parameter id
-      */
+     * Send an reset request for a parameter to the server
+     *
+     * @param  id      The parameter id
+     */
     reset_parameter(id) {
         // send message over the transport
         this.transport.send_message({
-            action: 'reset',
-            parameter: '/parameter/by-id/' + id,
+            action: "reset",
+            parameter: "/parameter/by-id/" + id,
         });
     }
 
-
     /**
-      * Start monitoring a parameter
-      *
-      * @param  id      The parameter id
-      * @param  handler The handler to invoke when the parameter changes
-      * @param  value   The initial value for the parameter, ignored if the parameter is already known
-      */
+     * Start monitoring a parameter
+     *
+     * @param  id      The parameter id
+     * @param  handler The handler to invoke when the parameter changes
+     * @param  value   The initial value for the parameter, ignored if the parameter is already known
+     */
     register_monitor(id, handler, value) {
         // check if we are already monitoring the parameter
-        if (typeof this.parameters[id] === 'undefined') {
+        if (typeof this.parameters[id] === "undefined") {
             this.parameters[id] = {
                 data: value,
                 callbacks: [handler],
@@ -89,8 +97,8 @@ class ParameterContainer {
 
             // ask the server to update us on the parameter data
             this.transport.send_message({
-                action: 'subscribe',
-                parameter: '/parameter/by-id/' + id,
+                action: "subscribe",
+                parameter: "/parameter/by-id/" + id,
             });
         } else {
             // add the handler to the existing list
@@ -102,11 +110,11 @@ class ParameterContainer {
     }
 
     /**
-      * Stop monitoring a parameter
-      *
-      * @param  id      The parameter id
-      * @param  handler The previously registered handler to remove
-      */
+     * Stop monitoring a parameter
+     *
+     * @param  id      The parameter id
+     * @param  handler The previously registered handler to remove
+     */
     unregister_monitor(id, handler) {
         // retrieve the handlers for this parameter
         const parameter = this.parameters[id];
@@ -127,11 +135,11 @@ class ParameterContainer {
 
             // ask the server to stop updating us on the parameter data
             this.transport.send_message({
-                action: 'unsubscribe',
-                parameter: '/parameter/by-id/' + id,
+                action: "unsubscribe",
+                parameter: "/parameter/by-id/" + id,
             });
         }
     }
-};
+}
 
 export default ParameterContainer;

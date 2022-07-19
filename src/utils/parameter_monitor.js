@@ -1,8 +1,8 @@
 //Source:
 //https://gitlab.resolume.com/public-resolume/arena-rest-example/-/blob/master/src/parameter_monitor.js
 
-import React, { useState, useContext, useEffect } from 'react';
-import { ResolumeContext } from './resolume_provider.js'
+import React, { useState, useContext, useEffect } from "react";
+import { ResolumeContext } from "./resolume_provider.js";
 
 /**
  *  Internal monitor class
@@ -11,32 +11,38 @@ import { ResolumeContext } from './resolume_provider.js'
  *  when the parameter value changes.
  */
 function Monitor(props) {
-    const { parameters }            = useContext(ResolumeContext);
-    const { parameter, onChange }   = props;
+    const { parameters } = useContext(ResolumeContext);
+    const { parameter, onChange } = props;
 
     // register the monitor, the returned function is invoked when the
     // component leaves scope, or when the parameter id prop is changed
     useEffect(() => {
         parameters.register_monitor(parameter.id, onChange, parameter);
-        return () => { parameters.unregister_monitor(parameter.id, onChange); };
+        return () => {
+            parameters.unregister_monitor(parameter.id, onChange);
+        };
     }, [parameter.id]);
 
     // we don't render anything from here
-    return (null);
+    return null;
 }
 
 const ParameterMonitor = {
     /**
      *  Monitor a single parameter
      */
-    Single: function({ parameter, render }) {
-        const [ state, setState ] = useState(parameter);
+    Single: function ({ parameter, render }) {
+        const [state, setState] = useState(parameter);
 
         const merge = (newState) => setState({ ...state, ...newState });
 
         return (
             <React.Fragment>
-                <Monitor parameter={parameter} onChange={merge} key={parameter.id} />
+                <Monitor
+                    parameter={parameter}
+                    onChange={merge}
+                    key={parameter.id}
+                />
                 {render(state)}
             </React.Fragment>
         );
@@ -46,18 +52,22 @@ const ParameterMonitor = {
      *  Monitor multiple parameters, given as a map of
      *  parameter id => parameter.
      */
-    Multiple: function({ parameters, render }) {
-        const [ state, setState ] = useState({});
+    Multiple: function ({ parameters, render }) {
+        const [state, setState] = useState({});
 
-        const onChange = parameter => {
-            setState(prevState => {
+        const onChange = (parameter) => {
+            setState((prevState) => {
                 const update = { [parameter.id]: parameter };
                 return { ...prevState, ...update };
-            })
+            });
         };
 
-        const monitored = Object.values(parameters).map(parameter => (
-            <Monitor parameter={parameter} onChange={onChange} key={parameter.id} />
+        const monitored = Object.values(parameters).map((parameter) => (
+            <Monitor
+                parameter={parameter}
+                onChange={onChange}
+                key={parameter.id}
+            />
         ));
 
         // merge parameters with updated state
@@ -77,8 +87,7 @@ const ParameterMonitor = {
                 {render(merged)}
             </React.Fragment>
         );
-    }
+    },
 };
-
 
 export default ParameterMonitor;
